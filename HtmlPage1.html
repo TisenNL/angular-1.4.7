@@ -7,8 +7,12 @@
   </head>
   <body ng-app="myModule" style="font-family: Arial">
     <div ng-controller="myController">
-        Rows to display: <input type="number" step="1" min="0" max="5" ng-model="rowLimit">
-        <br><br>
+      Order By : <select ng-model="sortColumn">
+        <option value="name">Name ASC</option>
+        <option value="gender">Gender ASC</option>
+        <option value="dateOfBirth">Date of Birth ASC</option>
+        <option value="-salary">Salary DESC</option>
+      </select>
         <table>
           <thead>
             <tr>
@@ -16,16 +20,14 @@
               <th>Date of Birth</th>
               <th>Gender</th>
               <th>Salary</th>
-              <th>Salary</th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="employee in employees | limitTo:rowLimit">
-              <td>{{ employee.name | uppercase }}</td>
-              <td>{{ employee.dateOfBirth | date: "dd/MM/yyyy" }}</td>
-              <td>{{ employee.gender | lowercase }}</td>
-              <td>{{ employee.salary | number:2 }}</td>
-              <td>{{ employee.salary | currency: "R$":1}}</td>
+            <tr ng-repeat="employee in employees | orderBy: sortColumn">
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.dateOfBirth | date:"dd/MM/yyyy" }}</td>
+              <td>{{ employee.gender }}</td>
+              <td>{{ employee.salary }}</td>
             </tr>
           </tbody>
         </table>

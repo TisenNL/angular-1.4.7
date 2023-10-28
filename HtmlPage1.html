@@ -10,19 +10,25 @@
 
 <body ng-app="myModule">
   <div ng-controller="myController">
+    <input type="checkbox" ng-model="hideSalary"> Show Salary
+    <br><br>
     <table>
       <thead>
         <tr>
           <th>Name</th>
           <th>Gender</th>
-          <th>Salary</th>
+          <th>City</th>
+          <th ng-hide="hideSalary">Salary</th>
+          <th ng-show="hideSalary">Salary</th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="employee in employees">
           <td>{{ employee.name }}</td>
-          <td>{{ employee.gender | gender }}</td>
-          <td>{{ employee.salary }}</td>
+          <td>{{ employee.gender }}</td>
+          <td>{{ employee.city }}</td>
+          <td ng-hide="hideSalary"> #### </td>
+          <td ng-show="hideSalary"> {{ employee.salary }} </td>
         </tr>
       </tbody>
     </table>

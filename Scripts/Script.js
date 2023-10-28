@@ -5,26 +5,12 @@ var myApp = angular
    .controller("myController", function ($scope) {
 
      var employees = [
-      { name: "Ben", dateOfBirth: new Date("November 23, 1980"), gender: "Male", salary: 55000.788 },
-      { name: "Sara", dateOfBirth: new Date("May 05, 1970"), gender: "Female", salary: 68000 },
-      { name: "Mark", dateOfBirth: new Date("August 15, 1974"), gender: "Female", salary: 57000 },
-      { name: "Pam", dateOfBirth: new Date("October 27, 1979"), gender: "Female", salary: 53000 },
-      { name: "Todd", dateOfBirth: new Date("December 30, 1983"), gender: "Male", salary: 60000 }
+      { name: "Ben", gender: "Male", salary: 55000, city: "London" },
+      { name: "Sara", gender: "Female", salary: 68000, city: "Chennai" },
+      { name: "Mark", gender: "Female", salary: 57000, city: "London" },
+      { name: "Pam", gender: "Female", salary: 53000, city: "Chennai" },
+      { name: "Todd", gender: "Male", salary: 60000, city: "London" }
      ];
 
      $scope.employees = employees;
-     $scope.sortColumn = "name";
-     $scope.reverseSort = false;
-
-     $scope.sortData = function (column) {
-      $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false
-      $scope.sortColumn = column;
-     }
-
-     $scope.getSortClass = function(column){
-      if($scope.sortColumn == column) {
-        return $scope.reverseSort ? 'arrow-down' : 'arrow-up';
-      }
-      return '';
-     }
    });
